@@ -23,10 +23,25 @@ library (tidyverse)
 library (haven)
 library (readxl)
 
-data <- read_excel("C:/Users/duana/OneDrive/McCourt_MIDP/Sem2/IntroDataScience/assignment04/Assignment04/assignment04/data/assignment4.xlsx")
+data <- read_excel("C:\Users\duana\OneDrive\McCourt_MIDP\Sem2\IntroDataScience\assignment04\Assignment04\assignment04\data\assignment4.xlsx")
 
 library(ggthemes)
 library(ggplot2)
+
+```
+
+# Data Visualization
+
+### Graph 1 - Relationship between GDP Per Capita and Infant Mortality Rate in India (2000-2019)
+
+##### From 2000 to 2019, as GDP per capita increased in India, we noticed that the infant mortality rate fell, on average. This relationship is close to a perfect negative one. This graph does not imply a causal relationship. We can only see an association between the two indicators. The reason behind it may be associated with the fact that an increase in GDP per capita could have led India to invest more in health initiatives, generating a decrease in infant mortality.
+
+```{r}
+data %>%
+ggplot(mapping = aes(x = GDP_pp, y = mortality_rate_infant)) +
+  geom_jitter(color = "red") +
+  labs(title = 'Relationship between GDP Per Capita and Infant Mortality Rate', 
+       x = 'GPD Per Capita', y = 'Infant Mortality Rate')
 
 ```
 
