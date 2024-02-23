@@ -7,6 +7,9 @@ execute:
 format:
   html:
     embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ### Source
@@ -20,24 +23,34 @@ library (tidyverse)
 library (haven)
 
 data <- read_csv("C:/Users/duana/OneDrive/McCourt_MIDP/Sem2/IntroDataScience/assignment04/Assignment04/assignment04/data/Assignment04_data.csv")
-git 
+
 library(ggthemes)
 library(ggplot2)
 
-data_new <- pivot_longer(data, cols = starts_with("20"), names_to = "Year", values_to = "value")
-data_new <- select (data_new, -"Series Code")
-data_new <- pivot_wider(data_new, names_from = "Series Name", values_from = "value")
+data_new <- pivot_longer(data, cols = starts_with("20"), names_to = 'Year', values_to = 'value')
+data_new <- select (data_new, -'Series Code')
+data_new <- pivot_wider(data_new, names_from = 'Series Name', values_from = 'value')
+
+data_new <- data_new %>%
+rename (GDP_pp = 'GDP per capita, PPP (constant 2017 international $)', 
+mortality_maternal = 'Maternal mortality ratio (modeled estimate, per 100,000 live births)',  
+mortality_infant = 'Mortality rate, infant (per 1,000 live births)') 
+
+data_new$Year <- as.numeric(sub("\\[YR[0-9]+\\]", "", data_new$Year))
 
 ```
+
+# Trials of graphs - error:
 
 # Visualization ...
 
 ### Mortality per country
 
-#### Comparasion between  You can add options to executable code like this
+#### Comparasion between You can add options to executable code like this
 
 ```{r}
 
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+The `echo: false` option disables the printing of code (only output is
+displayed).
