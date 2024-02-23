@@ -20,9 +20,14 @@ library (tidyverse)
 library (haven)
 
 data <- read_csv("C:/Users/duana/OneDrive/McCourt_MIDP/Sem2/IntroDataScience/assignment04/Assignment04/assignment04/data/Assignment04_data.csv")
-
+git 
 library(ggthemes)
 library(ggplot2)
+
+data_new <- pivot_longer(data, cols = starts_with("20"), names_to = "Year", values_to = "value")
+data_new <- select (data_new, -"Series Code")
+data_new <- pivot_wider(data_new, names_from = "Series Name", values_from = "value")
+
 ```
 
 # Visualization ...
