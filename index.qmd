@@ -23,7 +23,7 @@ library (tidyverse)
 library (haven)
 library (readxl)
 
-data <- read_excel("C:\Users\duana\OneDrive\McCourt_MIDP\Sem2\IntroDataScience\assignment04\Assignment04\assignment04\data\assignment4.xlsx")
+data <- read_excel('C:\\Users\\duana\\OneDrive\\McCourt_MIDP\\Sem2\\IntroDataScience\\assignment04\\Assignment04\\assignment04\\data\\assignment4.xlsx')
 
 library(ggthemes)
 library(ggplot2)
@@ -34,27 +34,38 @@ library(ggplot2)
 
 ### Graph 1 - Relationship between GDP Per Capita and Infant Mortality Rate in India (2000-2019)
 
-##### From 2000 to 2019, as GDP per capita increased in India, we noticed that the infant mortality rate fell, on average. This relationship is close to a perfect negative one. This graph does not imply a causal relationship. We can only see an association between the two indicators. The reason behind it may be associated with the fact that an increase in GDP per capita could have led India to invest more in health initiatives, generating a decrease in infant mortality.
+#### From 2000 to 2019, as GDP per capita increased in India, we noticed that the infant mortality rate fell, on average. This relationship is close to a perfect negative one. This graph does not imply a causal relationship. We can only see an association between the two indicators. The reason behind it may be associated with the fact that an increase in GDP per capita could have led India to invest more in health initiatives, generating a decrease in infant mortality.
 
 ```{r}
 data %>%
 ggplot(mapping = aes(x = GDP_pp, y = mortality_rate_infant)) +
   geom_jitter(color = "red") +
+  theme_minimal()+
   labs(title = 'Relationship between GDP Per Capita and Infant Mortality Rate', 
        x = 'GPD Per Capita', y = 'Infant Mortality Rate')
 
 ```
 
-# Trials of graphs - error:
+### Graph 2 - Trend of Life Expectancy at Birth (2000-2019)
 
-# Visualization ...
-
-### Mortality per country
-
-#### Comparasion between You can add options to executable code like this
+#### From 2000 to 2019, the life expectancy at birth in India has increased. The growth is consistent with Graph 1 (above), indicating a possible increase in health investments. In less than 20 years, the life expectancy increases from 62.67 years old to 70.91 years old.
 
 ```{r}
 
+data %>%
+  ggplot(mapping = aes(x = year, y = life_expectancy_at_birth)) +
+  geom_path(color = "green") +
+  labs(title = 'Trend of Life Expectancy at Birth (2000-2019)', 
+       x = 'Year', y = 'Life Expectancy at Birth') +
+  theme(plot.title = element_text(color = "red"), 
+          axis.title.x = element_text(color = "red", size = 10),
+    axis.title.y = element_text(color = "red", size = 10)) +  
+  guides(color = guide_legend(title = 'Trend of Life Expectancy at Birth (2000-2019)')) +  
+  scale_y_continuous(limits = c(60, 75))
+
+```
+
+```{}
 ```
 
 The `echo: false` option disables the printing of code (only output is
