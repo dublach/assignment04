@@ -18,6 +18,11 @@ https://databank.worldbank.org/source/world-development-indicators#
 ```{r}
 library (tidyverse)
 library (haven)
+
+data <- read_csv("C:/Users/duana/OneDrive/McCourt_MIDP/Sem2/IntroDataScience/assignment04/Assignment04/assignment04/data/Assignment04_data.csv")
+
+library(ggthemes)
+library(ggplot2)
 ```
 
 # Visualization ...
