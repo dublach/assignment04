@@ -9,21 +9,22 @@ format:
     embed-resources: true
 ---
 
-## Quarto
+### Source
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+World Bank Development Indicators
 
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+https://databank.worldbank.org/source/world-development-indicators#
 
 ```{r}
 library (tidyverse)
 library (haven)
-library (ipumsr)
 ```
 
-You can add options to executable code like this
+# Visualization ...
+
+### Mortality per country
+
+#### Comparasion between  You can add options to executable code like this
 
 ```{r}
 
