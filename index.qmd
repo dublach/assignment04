@@ -83,6 +83,30 @@ data %>%
 
 ```
 
+### Graph 4 - Life expectancy comparison between male and female (2000-2019)
+
+#### From 2000 to 2019, on average, women's and men's life expectancy has been increasing in India. We could also see this result in Graph 2. However, comparing the two groups, we noticed that women have a higher life expectancy at birth than men. This difference is consistent throughout the years. This result is consistent with a universal trend that women live more than men.
+
+```{r}
+
+combined_data <- data %>%
+  select(year, life_expectancy_at_birth_female, life_expectancy_at_birth_male) %>%
+  pivot_longer(cols = c(life_expectancy_at_birth_female, life_expectancy_at_birth_male),
+               names_to = 'gender', values_to = 'life_expectancy')
+
+# Plotting
+combined_data %>%
+  ggplot(aes(x = factor(year), y = life_expectancy, fill = gender)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  labs(title = 'Life Expectancy Comparison between Male and Female (2000-2019)',
+       fill = 'Gender', x = 'Year', y = 'Value') +
+   theme(plot.title = element_text(color = "blue", face = "bold"), 
+          axis.title.x = element_text(color = "blue", size = 10, face = "italic"),
+    axis.title.y = element_text(color = "blue", size = 10, face = "italic"),
+    legend.position = "bottom") +  
+  guides(color = guide_legend(title = 'Life Expectancy Comparison between Male and Female (2000-2019)')) 
+```
+
 ```         
 ```
 
