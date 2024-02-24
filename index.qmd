@@ -65,7 +65,25 @@ data %>%
 
 ```
 
-```{}
+### Graph 3 - Trend of Fertility Rate (2000-2019)
+
+#### From 2000 to 2019, the fertility rate per woman, in India has decreased on average. That means that women in general have been having less children. This can be a sign of social and economic development. In Graph 1 we saw that the GDP per capita is increeasing on the same period. We can notice a sign of a demographic transition - where the birthrate falls.
+
+```{r}
+
+data %>%
+  distinct(fertility_rate, year) %>%
+  ggplot() +
+  geom_line(mapping = aes(x = year, y = fertility_rate)) +
+  geom_point(mapping = aes(x = year, y = fertility_rate), size = 3, shape = 15) +
+  labs(title = 'Trend of Fertility Rate (2000-2019)', 
+       x = 'Year', y = 'Fertility Rate') +
+  scale_y_continuous(limits = c(0, 4)) + 
+  theme_classic()
+
+```
+
+```         
 ```
 
 The `echo: false` option disables the printing of code (only output is
